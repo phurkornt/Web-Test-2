@@ -24,20 +24,48 @@
 <body>
     <h1>Webboard Na</h1>
     <hr>
-    <span>หมวดหมู่ :</span>
+    <h3 style="display:inline;">หมวดหมู่ :</h3>
     <select name="" id="">
         <option value="">-- ทั้งหมด --</option>
         <option value="">เรื่องทั่วไป</option>
         <option value="">เรื่องเรียน</option>
     </select>
-    <span style="float: right;"></span>
-    <a href="login.html" style="float: right;">เข้าสู่ระบบ</a>
+    <span style="float: right;"></span
+    >
+    <?php 
+
+        session_start();
+        if( isset( $_SESSION['id']  ) ){
+           echo "<span style='float:right'; > ผู้ใช้งานระบบ : " .$_SESSION['username'] ;
+           echo "<a href='logout.php' style='margin-left:10px'</a>ออกจากระบบ</a>" ."</span>";
+           echo "<br><a href='newpost.php' style='float: left;'>สร้างกระทู้ใหม่</a>" ;
+        }else{
+           echo "<a href='login.php' style='float: right;'>เข้าสู่ระบบ</a>" ;
+        }
+        
+    ?>
+
+    
     <br><br><br>
     <ul>
         <?php
-        for ($i = 1; $i <= 10; $i++) {
-            echo "<li><a href=post.php?id=" . $i . " > กระทู้ที่ " . $i . "</a></li>";
+        if( !isset( $_SESSION['role']  ) ){
+            for ($i = 1; $i <= 10; $i++) {
+                echo "<li><a href=post.php?id=" . $i . " > กระทู้ที่ " . $i . "</a></li>";
+            }
+        }else{
+            if( $_SESSION['role'] == "a"  ){
+                for ($i = 1; $i <= 10; $i++) {
+                echo "<li><a href=post.php?id=" . $i . " > กระทู้ที่ " . $i . "</a>" . "&nbsp;&nbsp;&nbsp;<a href=delete.php?id=".$i." >ลบ </a></li>";
+                }
+            }else{
+                for ($i = 1; $i <= 10; $i++) {
+                    echo "<li><a href=post.php?id=" . $i . " > กระทู้ที่ " . $i . "</a></li>";
+                }
+            }
         }
+
+        
         ?>
         <!-- <li><a href="post.php?id=1">กระทู้ที่ 1</a></li>
         <li><a href="post.php?id=2">กระทู้ที่ 2</a></li>

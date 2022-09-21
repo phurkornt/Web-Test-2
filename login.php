@@ -1,3 +1,11 @@
+<?php 
+    session_start();
+    if( isset($_SESSION['id']) ){
+        header("Location:index.php");
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +27,21 @@
     
     
         table{
+            
             border: 2px solid black;
+            border-radius: 5px;
             width: 300px;
+        }
+        button{
+            padding: 0.5rem 2rem;
+            width: 8rem;
+            background-color: aquamarine;
+            border: none;
+            border-radius: 10px;
+            /* border: 10px; */
+        }
+        button:hover{
+            background-color:#a3e2cc;
         }
        
     </style>
@@ -30,22 +51,23 @@
     <h1>Webboard Na</h1>
     <hr>
     <form action="vertify.php" method="post">
-    <table align="center">
+    <table align="center" style="text-align: center;">
         <tr>
             <td colspan="2" style="background-color:#6cd2fe;">เข้าสู่ระบบ</td>
         </tr>
         <tr>
-            <td>login</td>
+            <td>Login</td>
             <td><input type="text" name="un" autocomplete ='off' ></td>
         </tr>
         <tr>
-            <td>password</td>
+            <td>Password</td>
             <td><input type="password" name="pw" ></td>
         </tr>
-        <tr><td colspan="2" style="text-align: center;"><input type="submit" value="Login"></td></tr>
+        
+        <tr><td colspan="2" style="text-align: center;"><br><button type="submit">Login</button></td></tr>
         
     </table>
 </form>
-    <p style="text-align: center;">ถ้ายังไม่ได้เป็นสมาชิก <a href="register.html">กรุณาสมัครสมาชิก</a></p>
+    <p style="text-align: center;">ถ้ายังไม่ได้เป็นสมาชิก <a href="register.php">กรุณาสมัครสมาชิก</a></p>
 </body>
 </html>

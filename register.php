@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if( isset($_SESSION['id']) ){
+        header("Location:index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +35,7 @@
     <h1>Webboard Na</h1>
     <hr>
     <form action="" method="get">
-    <table align="center">
+    <table align="center" >
         <tr>
             <td colspan="2" style="background-color:#6cd2fe;">กรอกข้อมูล</td>
         </tr>
