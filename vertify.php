@@ -1,8 +1,8 @@
-<?php 
-    session_start();
-    if( isset($_SESSION['id']) ){
-        header("Location:index.php");
-    }
+<?php
+session_start();
+if (isset($_SESSION['id'])) {
+    header("Location:index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,10 +17,12 @@
             border: 2px solid black;
             width: 300px;
         }
+
         h1 {
             text-align: center;
             font-size: 2rem;
         }
+
         body {
             text-align: center;
             font-family: sans-serif;
@@ -30,6 +32,8 @@
         .no-margin {
             margin: 0;
         }
+
+       
     </style>
 </head>
 
@@ -42,28 +46,24 @@
     $pass = $_POST["pw"];
 
 
-    
-    if ($user == "admin" && $pass == "ad1234"){
-        $_SESSION['username']='admin';
-        $_SESSION['role']='a';
-        $_SESSION['id']=session_id();
-        echo "<p>ยินดีต้อนรับคุณ ADMIN </p>";
 
-    }else if ($user == "member" && $pass == "mem1234"){
-        $_SESSION['username']='member';
-        $_SESSION['role']='m';
-        $_SESSION['id']=session_id();
+    if ($user == "admin" && $pass == "ad1234") {
+        $_SESSION['username'] = 'admin';
+        $_SESSION['role'] = 'a';
+        $_SESSION['id'] = session_id();
+        echo "<p>ยินดีต้อนรับคุณ ADMIN </p>";
+    } else if ($user == "member" && $pass == "mem1234") {
+        $_SESSION['username'] = 'member';
+        $_SESSION['role'] = 'm';
+        $_SESSION['id'] = session_id();
         echo "<p>ยินดีต้อนรับคุณ MEMBER </p>";
-    }else{
+    } else {
         echo "<p>ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง</p>";
     }
-        
+
     ?>
 
-    <!-- <p>เข้าสู่ระบบด้วย</p>
-    <p class="no-margin">Login = <?php echo $_POST["un"] ?></p>
-    <p class="no-margin">Password = <?php echo $_POST["pw"] ?></p> -->
-    <p style="text-align:center;"><a href="index.php" >กลับไปหน้าหลัก</a> </p>
+    <p style="text-align:center;"><a href="index.php">กลับไปหน้าหลัก</a> </p>
 </body>
 
 </html>
